@@ -2,18 +2,18 @@ apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
   name: airflow
-  namespace: gitops
+  namespace: argocd
 spec:
   project: default
   source:
-    repoURL: 'https://github.com/owshq-academy/ws-stack-dados-k8s.git'
+    repoURL: 'git@github.com:ArthurPieri/ws-stack-dados-k8s.git'
     path: infra/src/helm-charts/airflow
     targetRevision: HEAD
     helm:
       valueFiles:
         - values.yaml
   destination:
-    name: 'owshq-orion-ws-dev'
+    name: 'do-sfo3-ap-k8s'
     namespace: orchestrator
     server: ''
   syncPolicy:
